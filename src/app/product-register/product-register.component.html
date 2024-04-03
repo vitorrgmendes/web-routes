@@ -1,0 +1,15 @@
+<div>
+    <h1>Product Register</h1>
+
+    <div>
+        <input [(ngModel)]="name" placeholder="Name" type="text">
+        <input [(ngModel)]="price" placeholder="Price" type="number">
+        <button (click)="registerProduct()">Register</button>
+    </div>
+
+    <div>
+        <button routerLink="/product/list" routerLinkActive="active">Product List</button>
+        <button routerLink="/product" routerLinkActive="active">Product</button>
+        <button routerLink="/" routerLinkActive="active">Home</button>
+    </div>
+</div>
