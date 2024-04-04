@@ -19,7 +19,7 @@ export class ProductRegisterComponent {
   constructor(private productService: ProductService) { }
 
   registerProduct() {
-    this.productService.postProduct({ id: this.id, name: this.name, price: this.price });
+    this.productService.postProduct({ id: this.id, nome: this.name, preco: this.price });
     this.name = '';
     this.price = 0;
   }

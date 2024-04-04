@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 export interface Product {
   id: number;
-  name: string;
-  price: number;
+  nome: string;
+  preco: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  private products: Product[] = [];
+export class ProductService 
+{
+  products: Product[] = [];
+  private apiUrl = 'http://localhost:3000/produtos';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  postProduct(product: Product) {
-    this.products.push(product);
+  // API
+  getProducts()
+  {
+   return this.http.get<any>(this.apiUrl)
+          .pipe()
+          .subscribe(response => {
+            this.products = response.data;
+            console.log(this.products);            
+          });
   }
 
-  getProducts(): Product[] {
-    return this.products;
+  // Not API
+  postProduct(product: Product) {
+    this.products.push(product);
   }
 }
