@@ -16,6 +16,7 @@ export class ProductRegisterComponent {
   name = '';
   price = 0;
   errorMessage = '';
+  successMessage = '';
 
   constructor(private productService: ProductService) { }
 
@@ -29,7 +30,7 @@ export class ProductRegisterComponent {
     this.productService.postProduct({ id: this.id, nome: this.name, preco: this.price }).subscribe({
       next: () => {
         this.clearFields()
-        this.errorMessage = 'Product successfully created!';
+        this.successMessage = 'Product successfully created!';
       },
       error: (error) => {
         this.clearFields()
@@ -62,6 +63,7 @@ export class ProductRegisterComponent {
     this.name = '';
     this.price = 0;
     this.errorMessage = '';
+    this.successMessage = '';
   }
 }
 
