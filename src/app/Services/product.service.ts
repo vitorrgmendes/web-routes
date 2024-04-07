@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 
 export interface Product {
   id: number;
@@ -17,19 +18,23 @@ export class ProductService
 
   constructor(private http: HttpClient) {}
 
-  // API
-  getProducts()
-  {
-   return this.http.get<any>(this.apiUrl)
-          .pipe()
-          .subscribe(response => {
-            this.products = response.data;
-            console.log(this.products);            
-          });
+  // LIST
+  getProducts(): Observable<Product[]> {
+    return this.http.get<{data: Product[]}>(this.apiUrl).pipe(
+      map(response => response.data),
+      tap((products: Product[]) => {
+        this.products = products;
+      })
+    );
   }
 
-  // Not API
-  postProduct(product: Product) {
-    this.products.push(product);
+  // REGISTER
+  postProduct(product: { id: number, nome: string, preco: number }) {
+    return this.http.post(this.apiUrl, product).pipe(
+      catchError(error => {
+        console.error('Error posting product:', error);
+        return throwError(error);
+      })
+    );
   }
 }

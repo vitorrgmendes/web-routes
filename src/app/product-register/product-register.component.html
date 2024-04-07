@@ -5,11 +5,12 @@
         <input [(ngModel)]="name" placeholder="Name" type="text">
         <input [(ngModel)]="price" placeholder="Price" type="number">
         <button (click)="registerProduct()">Register</button>
+        <div *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
 
     <div>
         <button routerLink="/product/list" routerLinkActive="active">Product List</button>
-        <button routerLink="/product" routerLinkActive="active">Product</button>
         <button routerLink="/" routerLinkActive="active">Home</button>
     </div>
 </div>
+
