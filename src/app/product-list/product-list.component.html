@@ -1,23 +1,28 @@
-<div class="container">
-    <h1>Product List</h1>
+<html>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans|Lato|Montserrat|Raleway&display=swap" rel="stylesheet">
+    <body>
+        <div class="container">
+            <h1>Product List</h1>
 
-    <div class="products">
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-            <tr *ngFor="let product of products">
-                <td>{{ product.id }}</td>
-                <td>{{ product.nome }}</td>
-                <td>{{ product.preco }}</td>
-            </tr>
-        </table>
-    </div>
+            <div class="products">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr *ngFor="let product of products">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.nome }}</td>
+                        <td>{{ product.preco }}</td>
+                    </tr>
+                </table>
+            </div>
 
-    <div>
-        <button routerLink="/product/register" routerLinkActive="active">Product Register</button>
-        <button routerLink="/" routerLinkActive="active">Home</button>
-    </div>
-</div>
+            <div>
+                <button routerLink="/product/register" routerLinkActive="active">Product Register</button>
+                <button routerLink="/product" routerLinkActive="active">Products</button>
+            </div>
+        </div>
+    </body>
+</html>
